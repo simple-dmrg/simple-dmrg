@@ -191,8 +191,8 @@ def single_dmrg_step(sys, env, m, target_Sz=0, psi0_guess=None):
             psi0_sector = psi0_sector.reshape([len(sys_enl_basis_by_sector[sys_enl_Sz]), -1], order="C")
             rho_block_dict[sys_enl_Sz] = np.dot(psi0_sector, psi0_sector.conjugate().transpose())
 
-    # Diagonalize each block of the reduced density matrix and find the `m`
-    # overall most significant eigenvectors.
+    # Diagonalize each block of the reduced density matrix and sort the
+    # eigenvectors by eigenvalue.
     possible_eigenstates = []
     for Sz_sector, rho_block in rho_block_dict.items():
         w, v = np.linalg.eigh(rho_block)
@@ -201,7 +201,9 @@ def single_dmrg_step(sys, env, m, target_Sz=0, psi0_guess=None):
             possible_eigenstates.append((eval, evec, Sz_sector, current_sector_basis))
     possible_eigenstates.sort(reverse=True, key=lambda x: x[0])  # largest eigenvalue first
 
-    # Build the transformation matrix, which has sparse structure.
+    # Build the transformation matrix from the `m` overall most significant
+    # eigenvectors.  It will have sparse structure due to the conserved quantum
+    # number.
     my_m = min(len(possible_eigenstates), m)
     transformation_matrix = lil_matrix((sys_enl.basis_size, my_m), dtype='d')
     new_sector_array = np.zeros((my_m,), dtype='d')  # lists the sector of each

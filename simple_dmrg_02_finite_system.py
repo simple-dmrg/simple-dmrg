@@ -129,15 +129,16 @@ def single_dmrg_step(sys, env, m):
     psi0 = psi0.reshape([sys_enl.basis_size, -1], order="C")
     rho = np.dot(psi0, psi0.conjugate().transpose())
 
-    # Diagonalize the reduced density matrix and find the `m` overall most
-    # significant eigenvectors.
+    # Diagonalize the reduced density matrix and sort the eigenvectors by
+    # eigenvalue.
     w, v = np.linalg.eigh(rho)
     possible_eigenstates = []
     for eval, evec in zip(w, v.transpose()):
         possible_eigenstates.append((eval, evec))
     possible_eigenstates.sort(reverse=True, key=lambda x: x[0])  # largest eigenvalue first
 
-    # Build the transformation matrix.
+    # Build the transformation matrix from the `m` overall most significant
+    # eigenvectors.
     my_m = min(len(possible_eigenstates), m)
     transformation_matrix = np.zeros((sys_enl.basis_size, my_m), dtype='d', order='F')
     for i, (eval, evec) in enumerate(possible_eigenstates[:my_m]):
