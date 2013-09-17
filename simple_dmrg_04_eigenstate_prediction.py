@@ -360,5 +360,5 @@ def finite_system_algorithm(L, m_warmup, m_sweep_list):
 if __name__ == "__main__":
     np.set_printoptions(precision=10, suppress=True, threshold=10000, linewidth=300)
 
-    #infinite_system_algorithm(L=100, m=50)
+    #infinite_system_algorithm(L=100, m=20)
     finite_system_algorithm(L=20, m_warmup=10, m_sweep_list=[10, 20, 30, 40, 40])

@@ -169,4 +169,4 @@ def infinite_system_algorithm(L, m):
 if __name__ == "__main__":
     np.set_printoptions(precision=10, suppress=True, threshold=10000, linewidth=300)
 
-    infinite_system_algorithm(L=100, m=50)
+    infinite_system_algorithm(L=100, m=20)
