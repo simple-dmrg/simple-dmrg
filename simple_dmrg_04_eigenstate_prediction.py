@@ -263,7 +263,7 @@ def infinite_system_algorithm(L, m):
         block, energy, transformation_matrix, psi0 = single_dmrg_step(block, block, m=m)
         print("E/L =", energy / (block.length * 2))
 
-def finite_system_algorithm(L, m_warmup, m_sweeps):
+def finite_system_algorithm(L, m_warmup, m_sweep_list):
     assert L % 2 == 0  # require that L is an even number
 
     # To keep things simple, these dictionaries are not actually saved to disk,
@@ -292,7 +292,7 @@ def finite_system_algorithm(L, m_warmup, m_sweeps):
     # once we come to the end of the chain these roles will be reversed.
     sys_label, env_label = "l", "r"
     sys_block = block; del block  # rename the variable
-    for m in m_sweeps:
+    for m in m_sweep_list:
         while True:
             # Load the appropriate environment block from "disk"
             env_block = block_disk[env_label, L - sys_block.length - 2]
@@ -361,4 +361,4 @@ if __name__ == "__main__":
     np.set_printoptions(precision=10, suppress=True, threshold=10000, linewidth=300)
 
     #infinite_system_algorithm(L=100, m=50)
-    finite_system_algorithm(L=20, m_warmup=10, m_sweeps=[10, 20, 30, 40, 40])
+    finite_system_algorithm(L=20, m_warmup=10, m_sweep_list=[10, 20, 30, 40, 40])
