@@ -157,19 +157,12 @@ def single_dmrg_step(sys, env, m):
 
     return newblock, energy
 
-def graphic(sys_block, env_block):
-    """Returns a graphical representation of the DMRG step we are about to
-    perform, using '=' to represent the system sites, '-' to represent the
-    environment sites, and '**' to represent the two intermediate sites.
-    """
-    return ("=" * sys_block.length) + "**" + ("-" * env_block.length)
-
 def infinite_system_algorithm(L=100, m=50):
     block = initial_block
     # Repeatedly enlarge the system by performing a single DMRG step, using a
     # reflection of the current block as the environment.
     while 2 * block.length < L:
-        print(graphic(block, block))
+        print("L =", block.length * 2 + 2)
         block, energy = single_dmrg_step(block, block, m=m)
         print("E/L =", energy / (block.length * 2))
 
