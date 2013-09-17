@@ -157,7 +157,7 @@ def single_dmrg_step(sys, env, m):
 
     return newblock, energy
 
-def infinite_system_algorithm(L=100, m=50):
+def infinite_system_algorithm(L, m):
     block = initial_block
     # Repeatedly enlarge the system by performing a single DMRG step, using a
     # reflection of the current block as the environment.
@@ -169,4 +169,4 @@ def infinite_system_algorithm(L=100, m=50):
 if __name__ == "__main__":
     np.set_printoptions(precision=10, suppress=True, threshold=10000, linewidth=300)
 
-    infinite_system_algorithm(L=100)
+    infinite_system_algorithm(L=100, m=50)

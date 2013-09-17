@@ -254,7 +254,7 @@ def graphic(sys_block, env_block, sys_label="l"):
         graphic = graphic[::-1]
     return graphic
 
-def infinite_system_algorithm(L=100, m=50):
+def infinite_system_algorithm(L, m):
     block = initial_block
     # Repeatedly enlarge the system by performing a single DMRG step, using a
     # reflection of the current block as the environment.
@@ -263,7 +263,7 @@ def infinite_system_algorithm(L=100, m=50):
         block, energy, transformation_matrix, psi0 = single_dmrg_step(block, block, m=m)
         print("E/L =", energy / (block.length * 2))
 
-def finite_system_algorithm(L=100, m_warmup=50, m_sweeps=(50, 50)):
+def finite_system_algorithm(L, m_warmup, m_sweeps):
     assert L % 2 == 0  # require that L is an even number
 
     # To keep things simple, these dictionaries are not actually saved to disk,
@@ -360,5 +360,5 @@ def finite_system_algorithm(L=100, m_warmup=50, m_sweeps=(50, 50)):
 if __name__ == "__main__":
     np.set_printoptions(precision=10, suppress=True, threshold=10000, linewidth=300)
 
-    #infinite_system_algorithm(L=100)
+    #infinite_system_algorithm(L=100, m=50)
     finite_system_algorithm(L=20, m_warmup=10, m_sweeps=[10, 20, 30, 40, 40])
