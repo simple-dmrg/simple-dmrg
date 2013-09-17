@@ -1,0 +1,3 @@
+module load scipy/0.9.0_gcc_g95_py27
+module load matplotlib/1.1.0_gcc_py27
+module load atlas
