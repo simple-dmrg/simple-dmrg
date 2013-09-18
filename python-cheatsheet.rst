@@ -4,7 +4,7 @@ Python cheatsheet (to go along with ``simple-dmrg``)
 
 For a programmer, the standard, online `Python tutorial
 <http://docs.python.org/2/tutorial/>`_ is quite nice.  Below, we try
-to mention a few things so that you can get acquianted with the
+to mention a few things so that you can get acquainted with the
 ``simple-dmrg`` code as quickly as possible.
 
 Python includes a few powerful internal data structures (lists,
@@ -293,7 +293,7 @@ will execute all lines *except* the ones within the block that says::
 
     if __name__ == "__main__":
 
-So if we want to use the finite sytem algorithm, we can (assuming our
+So if we want to use the finite system algorithm, we can (assuming our
 source tree is in the ``PYTHONPATH``, which should typically include
 the current directory)::
 
