@@ -1,11 +1,11 @@
 Day 1 Exercises
 ===============
 
-1. Consider a reduced density matrix :math:`\rho` corresponding to a maximally mixed state in a Hilbert space of dimension :math:`md`.  Compute the truncation error associated with keeping only the largest m eigenvectors of :math:`\rho`.  Fortunately, the reduced density matrix eigenvalues for ground states of local Hamiltonians decay much more quickly!
+1.  Consider a reduced density matrix :math:`\rho` corresponding to a maximally mixed state in a Hilbert space of dimension :math:`md`.  Compute the truncation error associated with keeping only the largest m eigenvectors of :math:`\rho`.  Fortunately, the reduced density matrix eigenvalues for ground states of local Hamiltonians decay much more quickly!
 
-2. Explore computing the ground state energy of the Heisenberg model using the infinite system algorithm.  The exact Bethe ansatz result in the thermodynamic limit is :math:`E/L = 0.25 - \ln 2 = -0.443147`.  Note the respectable accuracy obtained with an extremely small block basis of size :math:`m \sim 10`.  Why does the DMRG work so well in this case?
+2.  Explore computing the ground state energy of the Heisenberg model using the infinite system algorithm.  The exact Bethe ansatz result in the thermodynamic limit is :math:`E/L = 0.25 - \ln 2 = -0.443147`.  Note the respectable accuracy obtained with an extremely small block basis of size :math:`m \sim 10`.  Why does the DMRG work so well in this case?
 
-3. Entanglement entropy:
+3.  Entanglement entropy:
 
     (a) Calculate the bipartite (von Neumann) entanglement entropy at the center of the chain during the infinite system algorithm.  How does it scale with :math:`L`?
 
@@ -35,7 +35,7 @@ Day 1 Exercises
 
         where :math:`S` is the von Neumann entropy.
 
-4. XXZ model:
+4.  XXZ model:
 
     (a) Change the code (ever so slightly) to accomodate spin-exchange anisotropy: :math:`H = \sum_{<ij>} \left[ \frac{J}{2}(S_i^+ S_j^- + \mathrm{h.c.}) + J_z S_i^z S_j^z \right]`.
 
