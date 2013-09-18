@@ -20,7 +20,7 @@ Day 1 Exercises
                 >>> plt.plot(x_values, y_values)
                 >>> plt.show()
 
-    (c) From the above, estimate the central charge of the "Bethe phase" (1D quasi-long-range Neel phase) of the 1D Heisenberg model, and in light of that, think again about your answer to the last part of exercise 2.
+    (c) From the above, estimate the central charge of the "Bethe phase" (1D quasi-long-range Néel phase) of the 1D Heisenberg model, and in light of that, think again about your answer to the last part of exercise 2.
 
         .. hint::
             to fit a line in python::
