@@ -72,16 +72,6 @@ Within a terminal, execute the following to unpack the code::
 
         $ source activate_sissa_modules
 
-.. tip::
-
-    In the SISSA computer lab, it is necessary to source the
-    ``activate_sissa_modules`` script every time you open a new
-    terminal.  If you find this inconvenient, run the following
-    command which will add the three lines to the end of your
-    ``.bashrc`` startup file::
-
-        $ cat activate_sissa_modules >> ~/.bashrc
-
 Once the relevant software is installed, each program is contained
 entirely in a single file.  The first program, for instance, can be
 run by issuing::
