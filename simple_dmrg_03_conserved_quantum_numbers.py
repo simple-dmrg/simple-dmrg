@@ -251,8 +251,8 @@ def infinite_system_algorithm(L, m):
 def finite_system_algorithm(L, m_warmup, m_sweep_list):
     assert L % 2 == 0  # require that L is an even number
 
-    # To keep things simple, these dictionaries are not actually saved to disk,
-    # but they are used to represent persistent storage.
+    # To keep things simple, this dictionary is not actually saved to disk, but
+    # it is used to represent persistent storage.
     block_disk = {}  # "disk" storage for Block objects
 
     # Use the infinite system algorithm to build up to desired size.  Each time
