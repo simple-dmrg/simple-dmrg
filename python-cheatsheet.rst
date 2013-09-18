@@ -63,6 +63,14 @@ Lists and tuples can contain any data type, and the data type of the elements ne
 
     >>> x = ["hello", 4, 8, (23, 12)]
 
+It is also possible to get a subset of a list (e.g. the first three
+elements) by using Python's `slice notation
+<http://stackoverflow.com/questions/509211/pythons-slice-notation>`_::
+
+    >>> x = [2, 3, 5, 7, 11]
+    >>> x[:3]
+    [2, 3, 5]
+
 Looping over lists and tuples
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
