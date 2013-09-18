@@ -330,5 +330,5 @@ It is also possible to get help in the REPL by using python's built-in
     >>> help({}.setdefault)   # help on a specific dict method
 
     >>> import numpy as np
-    >>> help(np.log)          # logarithms
+    >>> help(np.log)          # natural logarithm
     >>> help(np.linalg.eigh)  # eigensolver for hermitian matrices
