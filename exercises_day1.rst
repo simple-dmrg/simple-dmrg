@@ -39,6 +39,6 @@ Day 1 Exercises
 
     (a) Change the code (ever so slightly) to accomodate spin-exchange anisotropy: :math:`H = \sum_{<ij>} \left[ \frac{J}{2}(S_i^+ S_j^- + \mathrm{h.c.}) + J_z S_i^z S_j^z \right]`.
 
-    (b) For :math:`J_z/J > 1` (:math:`J_z/J < 1`), the ground state is known to be an Ising antiferromagnet (ferromagnet), and thus fully gapped.
+    (b) For :math:`J_z/J > 1` (:math:`J_z/J < -1`), the ground state is known to be an Ising antiferromagnet (ferromagnet), and thus fully gapped.
         Verify this by investigating scaling of the entanglement entropy as in exercise 3.  What do we expect for the central charge in this case?
 
