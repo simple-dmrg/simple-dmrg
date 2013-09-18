@@ -287,6 +287,16 @@ correspond to the rows and columns of the matrix, respectively.  Then,
 only a simple matrix multiplication is required to find the reduced
 density matrix.
 
+Mathematical constants
+----------------------
+
+``numpy`` also provides a variety of mathematical constants::
+
+    >>> np.pi
+    3.141592653589793
+    >>> np.e
+    2.718281828459045
+
 Experimentation and getting help
 --------------------------------
 
