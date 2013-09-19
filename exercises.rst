@@ -58,4 +58,4 @@ Day 2 Exercises
 4.  Implement the "ring term" :math:`H_\mathrm{ring} = K \sum_i S^z_{i} S^z_{i+1} S^z_{i+2} S^z_{i+3}`.  Note that this term is one of the pieces of the SU(2)-invariant four-site ring-exchange operator for sites (i, i+1, i+2, i+3), a term which is known to drive the :math:`J_1-J_2` Heisenberg model on the two-leg triangular strip into a quasi-1D descendant of the spinon Fermi sea ("spin Bose metal") spin liquid [see http://arxiv.org/abs/0902.4210].
 
     Answer:
-    ``finite_system_algorithm(L=20, m_warmup=10, m_sweep_list=[10, 20, 30, 40, 40])`` with :math:`K = J =1`, should give :math:`E/L = -0.40876250668`.
+    ``finite_system_algorithm(L=20, m_warmup=10, m_sweep_list=[10, 20, 30, 40, 40])`` with :math:`K = J = 1`, should give :math:`E/L = -0.40876250668`.
