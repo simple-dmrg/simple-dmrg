@@ -23,7 +23,7 @@ have tried to write the code in a very explicit style, hoping that it
 will be (mostly) understandable to somebody new to Python. (See also
 the included `Python cheatsheet <python-cheatsheet.rst>`_, which lists
 many of the Python features used by ``simple-dmrg``, and which should
-be helpful when trying the included `exercises <exercises_day1.rst>`_.)
+be helpful when trying the included `exercises <exercises.rst>`_.)
 
 The four modules build up DMRG from its simplest implementation to
 more complex implementations and optimizations.  Each file adds lines
