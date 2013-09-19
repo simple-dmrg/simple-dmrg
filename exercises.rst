@@ -46,7 +46,7 @@ Day 1 Exercises
 Day 2 Exercises
 ===============
 
-1.  Using ``simple_dmrg_03_conserved_quantum_numbers.py``, calculate the spin triplet gap :math:`E_0(S_z=1) - E_0(S_z=0)`.  How does the gap scale with :math:`1/L`?  Think about how you would go about computing the the spin *singlet* gap :math:`E_1(S_z=0) - E_0(S_z=0)`, i.e., the gap between the ground state and first excited state *within* the :math:`S_z=0` sector?
+1.  Using ``simple_dmrg_03_conserved_quantum_numbers.py``, calculate the "spin gap" :math:`E_0(S_z=1) - E_0(S_z=0)`.  How does the gap scale with :math:`1/L`?  Think about how you would go about computing the spectral gap in the :math:`S_z=0` sector:  :math:`E_1(S_z=0) - E_0(S_z=0)`, i.e., the gap between the ground state and first excited state *within* the :math:`S_z=0` sector.
 
 2.  Calculate the total weight of each :math:`S_z` sector in the enlarged system block after constructing each block of :math:`\rho`.  At this point, it's important to fully understand *why* :math:`\rho` is indeed block diagonal, with blocks labeled by the total quantum number :math:`S_z` for the enlarged system block.
 
