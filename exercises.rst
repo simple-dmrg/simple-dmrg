@@ -50,7 +50,7 @@ Day 2 Exercises
 
 2.  Calculate the total weight of each :math:`S_z` sector in the enlarged system block after constructing each block of :math:`\rho`.  At this point, it's important to fully understand *why* :math:`\rho` is indeed block diagonal, with blocks labeled by the total quantum number :math:`S_z` for the enlarged system block.
 
-3.  Starting with ``simple_dmrg_02_finite_system.py``, implement a spin-spin correlation function measurement of the free two sites at each step in the finite system algorithm, i.e., calculate :math:`\langle\vec{S}_{i}\cdot\vec{S}_{i+1}\rangle` for all i.  In exercise 3 of yesterday's tutorial, you should have noticed a strong period-2 oscillatory component of the entanglement entropy.  With your measurement of :math:`\langle\vec{S}_{i}\cdot\vec{S}_{i+1}\rangle`, can you now explain this on physical grounds?
+3.  Starting with ``simple_dmrg_02_finite_system.py``, implement a spin-spin correlation function measurement of the free two sites at each step in the finite system algorithm, i.e., calculate :math:`\langle\vec{S}_{i}\cdot\vec{S}_{i+1}\rangle` for all :math:`i`.  In exercise 3 of yesterday's tutorial, you should have noticed a strong period-2 oscillatory component of the entanglement entropy.  With your measurement of :math:`\langle\vec{S}_{i}\cdot\vec{S}_{i+1}\rangle`, can you now explain this on physical grounds?
 
     Answer:
     ``finite_system_algorithm(L=20, m_warmup=10, m_sweep_list=[10, 20, 30, 40, 40])`` with :math:`J = J_z = 1` should give :math:`\langle \vec{S}_{10} \cdot \vec{S}_{11} \rangle = -0.363847565413` on the last step.
