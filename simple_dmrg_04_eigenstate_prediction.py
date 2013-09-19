@@ -122,7 +122,7 @@ def index_map(array):
         d.setdefault(value, []).append(index)
     return d
 
-def single_dmrg_step(sys, env, m, target_Sz=0, psi0_guess=None):
+def single_dmrg_step(sys, env, m, target_Sz, psi0_guess=None):
     """Perform a single DMRG step using `sys` as the system and `env` as the
     environment, keeping a maximum of `m` states in the new basis.  If
     `psi0_guess` is provided, it will be used as a starting vector for the
@@ -254,16 +254,16 @@ def graphic(sys_block, env_block, sys_label="l"):
         graphic = graphic[::-1]
     return graphic
 
-def infinite_system_algorithm(L, m):
+def infinite_system_algorithm(L, m, target_Sz=0):
     block = initial_block
     # Repeatedly enlarge the system by performing a single DMRG step, using a
     # reflection of the current block as the environment.
     while 2 * block.length < L:
         print(graphic(block, block))
-        block, energy, transformation_matrix, psi0 = single_dmrg_step(block, block, m=m)
+        block, energy, transformation_matrix, psi0 = single_dmrg_step(block, block, m=m, target_Sz=target_Sz)
         print("E/L =", energy / (block.length * 2))
 
-def finite_system_algorithm(L, m_warmup, m_sweep_list):
+def finite_system_algorithm(L, m_warmup, m_sweep_list, target_Sz=0):
     assert L % 2 == 0  # require that L is an even number
 
     # To keep things simple, these dictionaries are not actually saved to disk,
@@ -281,7 +281,7 @@ def finite_system_algorithm(L, m_warmup, m_sweep_list):
     while 2 * block.length < L:
         # Perform a single DMRG step and save the new Block to "disk"
         print(graphic(block, block))
-        block, energy, transformation_matrix, psi0 = single_dmrg_step(block, block, m=m_warmup)
+        block, energy, transformation_matrix, psi0 = single_dmrg_step(block, block, m=m_warmup, target_Sz=target_Sz)
         print("E/L =", energy / (block.length * 2))
         block_disk["l", block.length] = block
         block_disk["r", block.length] = block
@@ -345,7 +345,7 @@ def finite_system_algorithm(L, m_warmup, m_sweep_list):
 
             # Perform a single DMRG step.
             print(graphic(sys_block, env_block, sys_label))
-            sys_block, energy, transformation_matrix, psi0 = single_dmrg_step(sys_block, env_block, m=m, psi0_guess=psi0_guess)
+            sys_block, energy, transformation_matrix, psi0 = single_dmrg_step(sys_block, env_block, m=m, target_Sz=target_Sz, psi0_guess=psi0_guess)
 
             print("E/L =", energy / L)
 
