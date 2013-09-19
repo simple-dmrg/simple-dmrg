@@ -52,9 +52,10 @@ Day 2 Exercises
 
 3.  Starting with ``simple_dmrg_02_finite_system.py``, implement a spin-spin correlation function measurement of the free two sites at each step in the finite system algorithm, i.e., calculate :math:`\langle\vec{S}_{i}\cdot\vec{S}_{i+1}\rangle` for all i.  In exercise 3 of yesterday's tutorial, you should have noticed a strong period-2 oscillatory component of the entanglement entropy.  With your measurement of :math:`\langle\vec{S}_{i}\cdot\vec{S}_{i+1}\rangle`, can you now explain this on physical grounds?
 
-    For L=20, m=20, you should get:
+    Answer:
+    ``finite_system_algorithm(L=20, m_warmup=10, m_sweep_list=[10, 20, 30, 40, 40])`` with :math:`J = J_z = 1` should give :math:`\langle \vec{S}_{10} \cdot \vec{S}_{11} \rangle = -0.363847565413` on the last step.
 
 4.  Implement the "ring term" :math:`H_\mathrm{ring} = K \sum_i S^z_{i} S^z_{i+1} S^z_{i+2} S^z_{i+3}`.  Note that this term is one of the pieces of the SU(2)-invariant four-site ring-exchange operator for sites (i, i+1, i+2, i+3), a term which is known to drive the :math:`J_1-J_2` Heisenberg model on the two-leg triangular strip into a quasi-1D descendant of the spinon Fermi sea ("spin Bose metal") spin liquid [see http://arxiv.org/abs/0902.4210].
 
     Answer:
-    finite_system_algorithm(L=20, m_warmup=10, m_sweep_list=[10, 20, 30, 40, 40]) with K=J=1, should give E/L = -0.40876250668
+    ``finite_system_algorithm(L=20, m_warmup=10, m_sweep_list=[10, 20, 30, 40, 40])`` with :math:`K = J =1`, should give :math:`E/L = -0.40876250668`.
