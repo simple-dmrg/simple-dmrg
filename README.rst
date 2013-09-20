@@ -62,16 +62,6 @@ Within a terminal, execute the following to unpack the code::
     $ unzip simple-dmrg-master.zip
     $ cd simple-dmrg-master/
 
-.. note::
-
-    If you are using the computers in the lab at SISSA, you will need
-    to activate three modules for the correct version of Python to
-    run.  These commands are given in `activate_sissa_modules
-    <activate_sissa_modules>`_, or you can run the following command
-    to activate them::
-
-        $ source activate_sissa_modules
-
 Once the relevant software is installed, each program is contained
 entirely in a single file.  The first program, for instance, can be
 run by issuing::
@@ -84,24 +74,9 @@ run by issuing::
 
         SyntaxError: future feature print_function is not defined
 
-    then you are using a version of Python below 2.6.  If you are in
-    the SISSA computer lab, follow the instructions above to activate
-    the correct modules.  If you are using your own machine, we may be
-    able to make the code work on versions of Python prior to 2.6
-    without much trouble.
-
-.. note::
-
-    The version of Python in the SISSA computer lab is compiled with
-    `many debugging checks enabled
-    <http://docs.python.org/2/c-api/intro.html#debugging-builds>`_.
-    For instance, after running the code, you may see something that
-    looks like::
-
-        [32067 refs]
-
-    As a result of these checks, the code runs approximately 15 times
-    slower on these machines than it does on our laptops.
+    then you are using a version of Python below 2.6.  Although it
+    would be best to upgrade, it may be possible to make the code work
+    on Python versions below 2.6 without much trouble.
 
 Authors
 =======
