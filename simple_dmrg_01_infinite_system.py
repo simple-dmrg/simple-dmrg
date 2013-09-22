@@ -130,9 +130,9 @@ def single_dmrg_step(sys, env, m):
 
     # Diagonalize the reduced density matrix and sort the eigenvectors by
     # eigenvalue.
-    w, v = np.linalg.eigh(rho)
+    evals, evecs = np.linalg.eigh(rho)
     possible_eigenstates = []
-    for eval, evec in zip(w, v.transpose()):
+    for eval, evec in zip(evals, evecs.transpose()):
         possible_eigenstates.append((eval, evec))
     possible_eigenstates.sort(reverse=True, key=lambda x: x[0])  # largest eigenvalue first
 

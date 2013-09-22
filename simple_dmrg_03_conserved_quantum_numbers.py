@@ -188,9 +188,9 @@ def single_dmrg_step(sys, env, m, target_Sz):
     # eigenvectors by eigenvalue.
     possible_eigenstates = []
     for Sz_sector, rho_block in rho_block_dict.items():
-        w, v = np.linalg.eigh(rho_block)
+        evals, evecs = np.linalg.eigh(rho_block)
         current_sector_basis = sys_enl_basis_by_sector[Sz_sector]
-        for eval, evec in zip(w, v.transpose()):
+        for eval, evec in zip(evals, evecs.transpose()):
             possible_eigenstates.append((eval, evec, Sz_sector, current_sector_basis))
     possible_eigenstates.sort(reverse=True, key=lambda x: x[0])  # largest eigenvalue first
 
