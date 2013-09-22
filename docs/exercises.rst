@@ -1,5 +1,8 @@
-Day 1 Exercises
-===============
+Exercises
+=========
+
+Day 1
+-----
 
 1.  Consider a reduced density matrix :math:`\rho` corresponding to a maximally mixed state in a Hilbert space of dimension :math:`md`.  Compute the truncation error associated with keeping only the largest m eigenvectors of :math:`\rho`.  Fortunately, the reduced density matrix eigenvalues for ground states of local Hamiltonians decay much more quickly!
 
@@ -43,8 +46,8 @@ Day 1 Exercises
         Verify this by investigating scaling of the entanglement entropy as in exercise 3.  What do we expect for the central charge in this case?
 
 
-Day 2 Exercises
-===============
+Day 2
+-----
 
 1.  Using ``simple_dmrg_03_conserved_quantum_numbers.py``, calculate the "spin gap" :math:`E_0(S_z=1) - E_0(S_z=0)`.  How does the gap scale with :math:`1/L`?  Think about how you would go about computing the spectral gap in the :math:`S_z=0` sector:  :math:`E_1(S_z=0) - E_0(S_z=0)`, i.e., the gap between the ground state and first excited state *within* the :math:`S_z=0` sector.
 

@@ -1,6 +1,8 @@
-====================================================
-Python cheatsheet (to go along with ``simple-dmrg``)
-====================================================
+=================
+Python cheatsheet
+=================
+
+[designed specifically for understanding and modifying simple-dmrg]
 
 For a programmer, the standard, online `Python tutorial
 <http://docs.python.org/2/tutorial/>`_ is quite nice.  Below, we try
