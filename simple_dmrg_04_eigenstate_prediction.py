@@ -259,9 +259,9 @@ def infinite_system_algorithm(L, m, target_Sz):
     # Repeatedly enlarge the system by performing a single DMRG step, using a
     # reflection of the current block as the environment.
     while 2 * block.length < L:
-        print(graphic(block, block))
         current_L = 2 * block.length + 2  # current superblock length
         current_target_Sz = int(target_Sz) * current_L // L
+        print("L =", current_L)
         block, energy, transformation_matrix, psi0 = single_dmrg_step(block, block, m=m, target_Sz=current_target_Sz)
         print("E/L =", energy / current_L)
 

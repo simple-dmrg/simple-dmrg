@@ -176,7 +176,7 @@ def infinite_system_algorithm(L, m):
     # Repeatedly enlarge the system by performing a single DMRG step, using a
     # reflection of the current block as the environment.
     while 2 * block.length < L:
-        print(graphic(block, block))
+        print("L =", block.length * 2 + 2)
         block, energy = single_dmrg_step(block, block, m=m)
         print("E/L =", energy / (block.length * 2))
 
