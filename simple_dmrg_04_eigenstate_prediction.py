@@ -260,8 +260,10 @@ def infinite_system_algorithm(L, m, target_Sz=0):
     # reflection of the current block as the environment.
     while 2 * block.length < L:
         print(graphic(block, block))
-        block, energy, transformation_matrix, psi0 = single_dmrg_step(block, block, m=m, target_Sz=target_Sz)
-        print("E/L =", energy / (block.length * 2))
+        current_L = 2 * block.length + 2  # current superblock length
+        current_target_Sz = int(target_Sz) * current_L // L
+        block, energy, transformation_matrix, psi0 = single_dmrg_step(block, block, m=m, target_Sz=current_target_Sz)
+        print("E/L =", energy / current_L)
 
 def finite_system_algorithm(L, m_warmup, m_sweep_list, target_Sz=0):
     assert L % 2 == 0  # require that L is an even number
@@ -281,8 +283,10 @@ def finite_system_algorithm(L, m_warmup, m_sweep_list, target_Sz=0):
     while 2 * block.length < L:
         # Perform a single DMRG step and save the new Block to "disk"
         print(graphic(block, block))
-        block, energy, transformation_matrix, psi0 = single_dmrg_step(block, block, m=m_warmup, target_Sz=target_Sz)
-        print("E/L =", energy / (block.length * 2))
+        current_L = 2 * block.length + 2  # current superblock length
+        current_target_Sz = int(target_Sz) * current_L // L
+        block, energy, transformation_matrix, psi0 = single_dmrg_step(block, block, m=m_warmup, target_Sz=current_target_Sz)
+        print("E/L =", energy / current_L)
         block_disk["l", block.length] = block
         block_disk["r", block.length] = block
 
