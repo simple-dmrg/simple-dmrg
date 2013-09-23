@@ -31,13 +31,13 @@ The four modules build up DMRG from its simplest implementation to
 more complex implementations and optimizations.  Each file adds lines
 of code and complexity compared with the previous version.
 
-1. `Infinite system algorithm <https://github.com/simple-dmrg/simple-dmrg/blob/master/simple_dmrg_01_infinite_system.py>`_
+1. :doc:`Infinite system algorithm <01_infinite_system>`
    (~180 lines, including comments)
-2. `Finite system algorithm <https://github.com/simple-dmrg/simple-dmrg/blob/master/simple_dmrg_02_finite_system.py>`_
+2. :doc:`Finite system algorithm <02_finite_system>`
    (~240 lines)
-3. `Conserved quantum numbers <https://github.com/simple-dmrg/simple-dmrg/blob/master/simple_dmrg_03_conserved_quantum_numbers.py>`_
+3. :doc:`Conserved quantum numbers <03_conserved_quantum_numbers>`
    (~310 lines)
-4. `Eigenstate prediction <https://github.com/simple-dmrg/simple-dmrg/blob/master/simple_dmrg_04_eigenstate_prediction.py>`_
+4. :doc:`Eigenstate prediction <04_eigenstate_prediction>`
    (~370 lines)
 
 Throughout the tutorial, we focus on the spin-1/2 `Heisenberg XXZ
@@ -63,3 +63,4 @@ Contents
    using
    exercises
    python-cheatsheet
+   source-code
