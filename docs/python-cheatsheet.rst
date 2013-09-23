@@ -260,14 +260,16 @@ or to access multiple columns (or rows) at once::
 	   [ 12.,   0.,  18.],
 	   [  0.,   0.,   0.]])
 
-One tricky thing about ``numpy`` arrays is that they do not act as
-matrices by default.  In fact, if you multiply two ``numpy`` arrays,
-python will attempt to multiply them element-wise!
-
 For matrix-vector (or matrix-matrix) multiplication use the
 ``np.dot()`` function::
 
     >>> np.dot(m, v)
+
+.. warning::
+
+    One tricky thing about ``numpy`` arrays is that they do not act as
+    matrices by default.  In fact, if you multiply two ``numpy``
+    arrays, python will attempt to multiply them element-wise!
 
 To take an inner product, you will need to take the
 transpose-conjugate of the left vector yourself::
