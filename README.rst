@@ -14,7 +14,7 @@ one-dimensional systems, giving results that are nearly exact.
 
 Source code: https://github.com/simple-dmrg/simple-dmrg/
 
-Documentation: http://simple-dmrg.readthedocs.org/en/latest/
+Documentation: http://simple-dmrg.readthedocs.org/
 
 Authors
 =======

@@ -4,7 +4,7 @@ SIMPLE DMRG
 
 Source code: https://github.com/simple-dmrg/simple-dmrg/
 
-Documentation: http://simple-dmrg.readthedocs.org/en/latest/
+Documentation: http://simple-dmrg.readthedocs.org/
 
 The goal of this tutorial (given at the `2013 summer school on quantum
 spin liquids <http://www.democritos.it/qsl2013/>`_, in Trieste, Italy)
