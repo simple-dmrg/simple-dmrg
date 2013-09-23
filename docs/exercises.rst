@@ -15,7 +15,7 @@ Day 1
     (b) Now, using the finite system algorithm, calculate the bipartite entanglement entropy for every bipartite splitting.  How does it scale with subsystem size :math:`x`?
 
         .. hint::
-            to create a simple plot in python::
+            To create a simple plot in python::
 
                 >>> from matplotlib import pyplot as plt
                 >>> x_values = [1, 2, 3, 4]
@@ -25,11 +25,6 @@ Day 1
 
     (c) From the above, estimate the central charge :math:`c` of the "Bethe phase" (1D quasi-long-range Néel phase) of the 1D Heisenberg model, and in light of that, think again about your answer to the last part of exercise 2.
 
-        .. hint::
-            to fit a line in python::
-
-                >>> slope, y_intercept = np.polyfit([1, 2, 3, 4], [-4, -2, 0, 2], 1)
-
         The formula for fitting the central charge on a system with open boundary conditions is:
 
         .. math::
@@ -37,6 +32,13 @@ Day 1
             S = \frac{c}{6} \ln \left[ \frac{L}{\pi} \sin \left( \frac{\pi x}{L} \right) \right] + A
 
         where :math:`S` is the von Neumann entropy.
+
+        .. hint::
+            To fit a line in python::
+
+                >>> x_values = [1, 2, 3, 4]
+                >>> y_values = [-4, -2, 0, 2]
+                >>> slope, y_intercept = np.polyfit(x_values, y_values, 1)
 
 4.  XXZ model:
 
