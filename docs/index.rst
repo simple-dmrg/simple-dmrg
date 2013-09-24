@@ -63,4 +63,5 @@ Contents
    using
    exercises
    python-cheatsheet
+   references
    source-code
