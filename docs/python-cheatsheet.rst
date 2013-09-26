@@ -5,7 +5,7 @@ Python cheatsheet
 [designed specifically for understanding and modifying simple-dmrg]
 
 For a programmer, the standard, online `Python tutorial
-<http://docs.python.org/2/tutorial/>`_ is quite nice.  Below, we try
+<http://docs.python.org/3/tutorial/>`_ is quite nice.  Below, we try
 to mention a few things so that you can get acquainted with the
 ``simple-dmrg`` code as quickly as possible.
 
@@ -114,7 +114,7 @@ elements and you want to loop over each of them at once, use the
     7 15
 
 There is a syntactic shortcut for transforming a list into a new one,
-known as a `list comprehension <http://docs.python.org/2/tutorial/datastructures.html#list-comprehensions>`_::
+known as a `list comprehension <http://docs.python.org/3/tutorial/datastructures.html#list-comprehensions>`_::
 
     >>> primes = [2, 3, 5, 7]
     >>> doubled_primes = [2 * x for x in primes]
