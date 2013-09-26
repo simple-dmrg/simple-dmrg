@@ -237,7 +237,9 @@ def single_dmrg_step(sys, env, m, target_Sz, psi0_guess=None):
     for i, z in enumerate(restricted_basis_indices):
         psi0[z, 0] = restricted_psi0[i, 0]
     if psi0_guess is not None:
-        print("overlap |<psi0_guess|psi0>| =", np.absolute(np.dot(psi0_guess.conjugate().transpose(), psi0).item()) / np.linalg.norm(psi0_guess) / np.linalg.norm(psi0))
+        overlap = np.absolute(np.dot(psi0_guess.conjugate().transpose(), psi0).item())
+        overlap /= np.linalg.norm(psi0_guess) * np.linalg.norm(psi0)  # normalize it
+        print("overlap |<psi0_guess|psi0>| =", overlap)
 
     return newblock, energy, transformation_matrix, psi0
 
