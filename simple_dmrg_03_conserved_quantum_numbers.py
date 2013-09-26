@@ -11,7 +11,7 @@
 
 # This code will run under any version of Python >= 2.6.  The following line
 # provides consistency between python2 and python3.
-from __future__ import print_function, division
+from __future__ import print_function, division  # requires Python >= 2.6
 
 # numpy and scipy imports
 import numpy as np
