@@ -298,15 +298,15 @@ def finite_system_algorithm(L, m_warmup, m_sweep_list, target_Sz):
     # once we come to the end of the chain these roles will be reversed.
     sys_label, env_label = "l", "r"
     sys_block = block; del block  # rename the variable
+    sys_trmat = None
     for m in m_sweep_list:
         while True:
-            # Load the appropriate environment block from "disk"
+            # Load the appropriate environment from "disk"
             env_block = block_disk[env_label, L - sys_block.length - 2]
+            env_trmat = trmat_disk.get((env_label, L - sys_block.length - 1))
 
             # If possible, predict an estimate of the ground state wavefunction
             # from the previous step's psi0 and known transformation matrices.
-            sys_trmat = trmat_disk.get((sys_label, sys_block.length))
-            env_trmat = trmat_disk.get((env_label, L - sys_block.length - 1))
             if psi0 is None or sys_trmat is None or env_trmat is None:
                 psi0_guess = None
             else:
@@ -355,13 +355,13 @@ def finite_system_algorithm(L, m_warmup, m_sweep_list, target_Sz):
 
             # Perform a single DMRG step.
             print(graphic(sys_block, env_block, sys_label))
-            sys_block, energy, transformation_matrix, psi0 = single_dmrg_step(sys_block, env_block, m=m, target_Sz=target_Sz, psi0_guess=psi0_guess)
+            sys_block, energy, sys_trmat, psi0 = single_dmrg_step(sys_block, env_block, m=m, target_Sz=target_Sz, psi0_guess=psi0_guess)
 
             print("E/L =", energy / L)
 
             # Save the block and transformation matrix from this step to disk.
             block_disk[sys_label, sys_block.length] = sys_block
-            trmat_disk[sys_label, sys_block.length] = transformation_matrix
+            trmat_disk[sys_label, sys_block.length] = sys_trmat
 
             # Check whether we just completed a full sweep.
             if sys_label == "l" and 2 * sys_block.length == L:
