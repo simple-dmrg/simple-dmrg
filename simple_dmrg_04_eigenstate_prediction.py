@@ -302,10 +302,6 @@ def finite_system_algorithm(L, m_warmup, m_sweep_list, target_Sz):
         while True:
             # Load the appropriate environment block from "disk"
             env_block = block_disk[env_label, L - sys_block.length - 2]
-            if env_block.length == 1:
-                # We've come to the end of the chain, so we reverse course.
-                sys_block, env_block = env_block, sys_block
-                sys_label, env_label = env_label, sys_label
 
             # If possible, predict an estimate of the ground state wavefunction
             # from the previous step's psi0 and known transformation matrices.
@@ -348,6 +344,15 @@ def finite_system_algorithm(L, m_warmup, m_sweep_list, target_Sz):
                 # an enlarged block the so that psi0_guess has the tensor
                 # product structure of ====**--.
                 psi0_guess = env_trmat.dot(psi0_d.transpose()).transpose().reshape((-1, 1))
+
+            if env_block.length == 1:
+                # We've come to the end of the chain, so we reverse course.
+                sys_block, env_block = env_block, sys_block
+                sys_label, env_label = env_label, sys_label
+                sys_trmat, env_trmat = env_trmat, sys_trmat
+                if psi0_guess is not None:
+                    # Re-order psi0_guess based on the new sys, env labels.
+                    psi0_guess = psi0_guess.reshape((env_trmat.shape[1] * model_d, sys_trmat.shape[0]), order="C").transpose().reshape((-1, 1))
 
             # Perform a single DMRG step.
             print(graphic(sys_block, env_block, sys_label))
