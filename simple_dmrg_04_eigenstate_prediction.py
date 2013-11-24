@@ -349,10 +349,9 @@ def finite_system_algorithm(L, m_warmup, m_sweep_list, target_Sz):
                 # We've come to the end of the chain, so we reverse course.
                 sys_block, env_block = env_block, sys_block
                 sys_label, env_label = env_label, sys_label
-                sys_trmat, env_trmat = env_trmat, sys_trmat
                 if psi0_guess is not None:
                     # Re-order psi0_guess based on the new sys, env labels.
-                    psi0_guess = psi0_guess.reshape((env_trmat.shape[1] * model_d, sys_trmat.shape[0]), order="C").transpose().reshape((-1, 1))
+                    psi0_guess = psi0_guess.reshape((sys_trmat.shape[1] * model_d, env_trmat.shape[0]), order="C").transpose().reshape((-1, 1))
 
             # Perform a single DMRG step.
             print(graphic(sys_block, env_block, sys_label))
