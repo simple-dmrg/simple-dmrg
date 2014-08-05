@@ -48,8 +48,8 @@ models.
 Authors
 =======
 
-* James R. Garrison (UCSB)
-* Ryan V. Mishmash (UCSB)
+- James R. Garrison (UCSB)
+- Ryan V. Mishmash (UCSB)
 
 Licensed under the MIT license.  If you plan to publish work based on
 this code, please contact us to find out how to cite us.

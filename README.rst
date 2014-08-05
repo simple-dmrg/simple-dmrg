@@ -16,6 +16,10 @@ Source code: https://github.com/simple-dmrg/simple-dmrg/
 
 Documentation: http://simple-dmrg.readthedocs.org/
 
+See also: `sophisticated-dmrg
+<https://github.com/simple-dmrg/sophisticated-dmrg>`_, a more
+"sophisticated" code based on this tutorial.
+
 Authors
 =======
 
