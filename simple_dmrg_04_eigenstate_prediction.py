@@ -301,7 +301,7 @@ def finite_system_algorithm(L, m_warmup, m_sweep_list, target_Sz):
     sys_trmat = None
     for m in m_sweep_list:
         while True:
-            # Load the appropriate environment from "disk"
+            # Load the appropriate environment block from "disk"
             env_block = block_disk[env_label, L - sys_block.length - 2]
             env_trmat = trmat_disk.get((env_label, L - sys_block.length - 1))
 
