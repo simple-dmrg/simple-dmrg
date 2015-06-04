@@ -90,7 +90,7 @@ def rotate_and_truncate(operator, transformation_matrix):
     return transformation_matrix.conjugate().transpose().dot(operator.dot(transformation_matrix))
 
 def single_dmrg_step(sys, env, m):
-    """Perform a single DMRG step using `sys` as the system and `env` as the
+    """Performs a single DMRG step using `sys` as the system and `env` as the
     environment, keeping a maximum of `m` states in the new basis.
     """
     assert is_valid_block(sys)
@@ -144,7 +144,7 @@ def single_dmrg_step(sys, env, m):
         transformation_matrix[:, i] = evec
 
     truncation_error = 1 - sum([x[0] for x in possible_eigenstates[:my_m]])
-    print("truncation error", truncation_error)
+    print("truncation error:", truncation_error)
 
     # Rotate and truncate each operator.
     new_operator_dict = {}

@@ -122,7 +122,7 @@ def index_map(array):
     return d
 
 def single_dmrg_step(sys, env, m, target_Sz):
-    """Perform a single DMRG step using `sys` as the system and `env` as the
+    """Performs a single DMRG step using `sys` as the system and `env` as the
     environment, keeping a maximum of `m` states in the new basis.
     """
     assert is_valid_block(sys)
@@ -212,7 +212,7 @@ def single_dmrg_step(sys, env, m, target_Sz):
     transformation_matrix = transformation_matrix.tocsr()
 
     truncation_error = 1 - sum([x[0] for x in possible_eigenstates[:my_m]])
-    print("truncation error", truncation_error)
+    print("truncation error:", truncation_error)
 
     # Rotate and truncate each operator.
     new_operator_dict = {}
