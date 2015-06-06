@@ -109,9 +109,12 @@ function single_dmrg_step(sys::Block, env::Block, m::Int)
 
     # Call ARPACK to find the superblock ground state.  (:SR means find the
     # eigenvalue with the "smallest real" value.)
+    #
+    # But first, we explicitly modify the matrix so that it will be detected as
+    # Hermitian by `eigs`.  (Without this step, the matrix is effectively
+    # Hermitian but won't be detected as such due to small roundoff error.)
+    superblock_hamiltonian = (superblock_hamiltonian + superblock_hamiltonian') / 2
     (energy,), psi0 = eigs(superblock_hamiltonian, nev=1, which=:SR)
-    energy = real(energy) # because Julia does not (yet) support sparse
-                          # Hermitian matrices
 
     # Construct the reduced density matrix of the system by tracing out the
     # environment
@@ -120,7 +123,7 @@ function single_dmrg_step(sys::Block, env::Block, m::Int)
     # matrix, respectively.  Since the environment (column) index updates most
     # quickly in our Kronecker product structure, psi0 is thus row-major.
     # However, Julia stores matrices in column-major format, so we first
-    # construct our matrix in (column, row) form and then take the transpose.
+    # construct our matrix in (env, sys) form and then take the transpose.
     psi0 = transpose(reshape(psi0, (env_enl.basis_size, sys_enl.basis_size)))
     rho = Hermitian(psi0 * psi0')
 
