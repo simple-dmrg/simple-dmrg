@@ -153,7 +153,7 @@ function single_dmrg_step(sys::Block, env::Block, m::Int)
     return newblock, energy
 end
 
-function infinite_system_algorithm(L, m)
+function infinite_system_algorithm(L::Int, m::Int)
     block = initial_block
     # Repeatedly enlarge the system by performing a single DMRG step, using a
     # reflection of the current block as the environment.
