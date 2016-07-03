@@ -25,7 +25,7 @@ end
 
 # For these objects to be valid, the basis size must match the dimension of
 # each operator matrix.
-isvalid(block::Union(Block,EnlargedBlock)) =
+isvalid(block::@compat(Union{Block,EnlargedBlock})) =
     all(op -> size(op) == (block.basis_size, block.basis_size), values(block.operator_dict))
 
 # Model-specific code for the Heisenberg XXZ chain
