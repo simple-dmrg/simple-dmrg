@@ -7,8 +7,6 @@
 # Open source under the MIT license.  Source code at
 # <https://github.com/simple-dmrg/simple-dmrg/>
 
-using Compat # allows compatibility with Julia versions 0.3 and 0.4
-
 # Data structures to represent the block and enlarged block objects.
 immutable Block
     length::Int
@@ -24,7 +22,7 @@ end
 
 # For these objects to be valid, the basis size must match the dimension of
 # each operator matrix.
-isvalid(block::@compat(Union{Block,EnlargedBlock})) =
+isvalid(block::Union{Block,EnlargedBlock}) =
     all(op -> size(op) == (block.basis_size, block.basis_size), values(block.operator_dict))
 
 # Model-specific code for the Heisenberg XXZ chain
@@ -47,7 +45,7 @@ end
 # conn refers to the connection operator, that is, the operator on the edge of
 # the block, on the interior of the chain.  We need to be able to represent S^z
 # and S^+ on that site in the current basis in order to grow the chain.
-initial_block = Block(1, model_d, @compat Dict{Symbol,AbstractMatrix{Float64}}(
+initial_block = Block(1, model_d, Dict{Symbol,AbstractMatrix{Float64}}(
     :H => H1,
     :conn_Sz => Sz1,
     :conn_Sp => Sp1,
@@ -64,7 +62,7 @@ function enlarge_block(block::Block)
     # `kron` uses the tensor product convention making blocks of the second
     # array scaled by the first.  As such, we adopt this convention for
     # Kronecker products throughout the code.
-    enlarged_operator_dict = @compat Dict{Symbol,AbstractMatrix{Float64}}(
+    enlarged_operator_dict = Dict{Symbol,AbstractMatrix{Float64}}(
         :H => kron(o[:H], speye(model_d)) + kron(speye(mblock), H1) + H2(o[:conn_Sz], o[:conn_Sp], Sz1, Sp1),
         :conn_Sz => kron(speye(mblock), Sz1),
         :conn_Sp => kron(speye(mblock), Sp1),
