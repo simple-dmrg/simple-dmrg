@@ -2,6 +2,9 @@
 SIMPLE DMRG
 ===========
 
+.. image:: https://zenodo.org/badge/12771371.svg
+   :target: https://zenodo.org/badge/latestdoi/12771371
+
 The goal of this tutorial (given at the `2013 summer school on quantum
 spin liquids <http://www.democritos.it/qsl2013/>`_, in Trieste, Italy)
 is to present the `density-matrix renormalization group
