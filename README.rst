@@ -29,5 +29,5 @@ Authors
 * James R. Garrison (UCSB)
 * Ryan V. Mishmash (UCSB)
 
-Licensed under the MIT license.  If you plan to publish work based on
-this code, please contact us to find out how to cite us.
+Licensed under the MIT license.  If you publish work or results based on
+this code, [please cite us](https://zenodo.org/badge/latestdoi/12771371).
