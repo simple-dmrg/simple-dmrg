@@ -7,14 +7,18 @@
 # Open source under the MIT license.  Source code at
 # <https://github.com/simple-dmrg/simple-dmrg/>
 
+using Arpack
+using LinearAlgebra
+using SparseArrays
+
 # Data structures to represent the block and enlarged block objects.
-immutable Block
+struct Block
     length::Int
     basis_size::Int
     operator_dict::Dict{Symbol,AbstractMatrix{Float64}}
 end
 
-immutable EnlargedBlock
+struct EnlargedBlock
     length::Int
     basis_size::Int
     operator_dict::Dict{Symbol,AbstractMatrix{Float64}}
@@ -37,8 +41,8 @@ function H2(Sz1, Sp1, Sz2, Sp2)  # two-site part of H
     # Given the operators S^z and S^+ on two sites in different Hilbert spaces
     # (e.g. two blocks), returns a Kronecker product representing the
     # corresponding two-site term in the Hamiltonian that joins the two sites.
-    const J = 1.0
-    const Jz = 1.0
+    J = 1.0
+    Jz = 1.0
     return (J / 2) * (kron(Sp1, Sp2') + kron(Sp1', Sp2)) + Jz * kron(Sz1, Sz2)
 end
 
@@ -62,10 +66,12 @@ function enlarge_block(block::Block)
     # `kron` uses the tensor product convention making blocks of the second
     # array scaled by the first.  As such, we adopt this convention for
     # Kronecker products throughout the code.
+    I1 = sparse(1.0I, model_d, model_d)
+    I_block = sparse(1.0I, mblock, mblock)
     enlarged_operator_dict = Dict{Symbol,AbstractMatrix{Float64}}(
-        :H => kron(o[:H], speye(model_d)) + kron(speye(mblock), H1) + H2(o[:conn_Sz], o[:conn_Sp], Sz1, Sp1),
-        :conn_Sz => kron(speye(mblock), Sz1),
-        :conn_Sp => kron(speye(mblock), Sp1),
+        :H => kron(o[:H], I1) + kron(I_block, H1) + H2(o[:conn_Sz], o[:conn_Sp], Sz1, Sp1),
+        :conn_Sz => kron(I_block, Sz1),
+        :conn_Sp => kron(I_block, Sp1),
     )
 
     return EnlargedBlock(block.length + 1,
@@ -102,7 +108,9 @@ function single_dmrg_step(sys::Block, env::Block, m::Int)
     m_env_enl = env_enl.basis_size
     sys_enl_op = sys_enl.operator_dict
     env_enl_op = env_enl.operator_dict
-    superblock_hamiltonian = kron(sys_enl_op[:H], speye(m_env_enl)) + kron(speye(m_sys_enl), env_enl_op[:H]) +
+    I_sys_enl = sparse(1.0I, m_sys_enl, m_sys_enl)
+    I_env_enl = sparse(1.0I, m_env_enl, m_env_enl)
+    superblock_hamiltonian = kron(sys_enl_op[:H], I_env_enl) + kron(I_sys_enl, env_enl_op[:H]) +
                              H2(sys_enl_op[:conn_Sz], sys_enl_op[:conn_Sp], env_enl_op[:conn_Sz], env_enl_op[:conn_Sp])
 
     # Call ARPACK to find the superblock ground state.  (:SR means find the
@@ -127,8 +135,8 @@ function single_dmrg_step(sys::Block, env::Block, m::Int)
 
     # Diagonalize the reduced density matrix and sort the eigenvectors by
     # eigenvalue.
-    fact = eigfact(rho)
-    evals, evecs = fact[:values], fact[:vectors]
+    fact = eigen(rho)
+    evals, evecs = fact.values, fact.vectors
     permutation = sortperm(evals, rev=true)
 
     # Build the transformation matrix from the `m` overall most significant
